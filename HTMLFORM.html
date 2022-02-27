@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title> HTML Form</title>
+<style type="text/css">
+ 
+ *{
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+.main{
+
+width; 100%
+
+}
+
+.box {
+ margin-top: 50px;
+ background-color: rgba(0, 0, 0, 0.5);
+ width: 60%;
+ height: 40%;
+ top: center;
+ padding: 20px;
+ border-radius: 10px;
+
+}
+
+.box h1{
+font-size: ;
+color: white;
+margin: 30px;
+font-family: monospace;
+}
+
+.box label{
+
+ color: white;
+ font-size: 20px;
+ font-family: sans-serif;
+
+;
+}
+
+.box input{
+
+ padding: 10px;
+ border-radius: 10px;
+width: 80%;
+}
+
+.box button{
+ border-radius: 50px;
+ padding: 10px;
+ animation: animate 2s linear infinite;
+}
+ @keyframes animate{
+
+ 25%{
+ background-color: red;
+ }
+ 50%{
+ background-color: green;
+ }
+ 75%{
+ background-color: blueviolet;
+ }
+ 100%{
+ background-color: white;
+ }
+ }
+</style>
+
+</head>
+
+<body background="px.jpg" style="background-repeat: no-repeat;" >
+<center>
+<div class="main">
+<div class="box">
+ <h1> Registration Here </h1>
+ <form method="POST" action="<!--PUT YOUR API OF GOOGLE SPREADSHEET HERE-->" >
+ <label><i>`' Your Name</i></label>
+ <div>
+ <input type="text" name="data[name]" placeholder="Enter your name" required>
+ </div>
+
+ <br>
+
+<label><i>`' Your Email Address</i></label>
+<div>
+ <input type="email" name="data[email]" placeholder="Enter a valid email address" required>
+</div>
+<br>
+<label><i>`' Enter Your Passwod</i></label>
+<div>
+ <input type="password" name="data[password]" placeholder="Type a password" required>
+
+</div>
+<br>
+<button> Submit My Registration </button>
+</form>
+</div><!--Boxdiv-->
+</div><!--Main Div-->
+
+</center>
+
+<script>
+  var form = document.getElementById('sheetdb-form');
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    fetch(form.action, {
+        method : "POST",
+        body: new FormData(document.getElementById("sheetdb-form")),
+    }).then(
+        response => response.json()
+    ).then((html) => {
+      // you can put any JS code here
+      alert('Registration has been done successfully')
+    });
+  });
+</script>
+
+</body>
+</html>
